@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="550dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/getstarted" />
+    <TextView
+        android:layout_width="350dp"
+        android:layout_height="160dp"
+        android:layout_marginLeft="-23dp"
+        android:layout_marginTop="30dp"
+        android:text="It's easy talking to your friends with iMessage  "
+        android:textColor="#000000"
+        android:textSize="37dp"
+        android:textStyle="bold" />
+    <TextView
+        android:layout_width="360dp"
+        android:layout_height="65dp"
+        android:layout_marginLeft="-15dp"
+        android:text="Chat With Your Friends Simply And Simple With iMessage"
+        android:textColor="#444444"
+        android:textSize="15dp"
+        android:textStyle="normal" />
+    <Button
+        android:id="@+id/getStartedButtonView"
+        android:layout_width="350dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="20dp"
+        android:text="Get started"
+        android:textColor="#FFF"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+</LinearLayout>
