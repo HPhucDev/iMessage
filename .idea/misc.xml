@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable/circle_bg.xml" value="0.16510416666666666" />
+        <entry key="app/src/main/res/drawable/circle_green.xml" value="0.16510416666666666" />
+        <entry key="app/src/main/res/drawable/ic_call.xml" value="0.2935185185185185" />
+        <entry key="app/src/main/res/drawable/ic_camera.xml" value="0.2935185185185185" />
+        <entry key="app/src/main/res/drawable/ic_chat.xml" value="0.16510416666666666" />
+        <entry key="app/src/main/res/drawable/ic_chats.xml" value="0.25555555555555554" />
+        <entry key="app/src/main/res/drawable/ic_facebook_angry_logo_svgrepo_com.xml" value="0.2935185185185185" />
+        <entry key="app/src/main/res/drawable/ic_left_arrow.xml" value="0.2935185185185185" />
+        <entry key="app/src/main/res/drawable/ic_search.xml" value="0.2935185185185185" />
+        <entry key="app/src/main/res/drawable/ic_send.xml" value="0.2935185185185185" />
+        <entry key="app/src/main/res/drawable/ic_video.xml" value="0.2935185185185185" />
+        <entry key="app/src/main/res/drawable/receive_drawable.xml" value="0.2935185185185185" />
+        <entry key="app/src/main/res/layout/activity_chat.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_createprofile.xml" value="0.33337189557388175" />
+        <entry key="app/src/main/res/layout/activity_getstarted.xml" value="0.23278985507246377" />
+        <entry key="app/src/main/res/layout/activity_group_chat.xml" value="0.23278985507246377" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_otp.xml" value="0.1818591123922574" />
+        <entry key="app/src/main/res/layout/activity_phonenumber.xml" value="0.14895833333333333" />
+        <entry key="app/src/main/res/layout/delete_dialog.xml" value="0.23278985507246377" />
+        <entry key="app/src/main/res/layout/demo_layout.xml" value="0.23278985507246377" />
+        <entry key="app/src/main/res/layout/demo_status.xml" value="0.14895833333333333" />
+        <entry key="app/src/main/res/layout/item_receive.xml" value="0.23278985507246377" />
+        <entry key="app/src/main/res/layout/item_receive_group.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/item_sent.xml" value="0.4091508506334763" />
+        <entry key="app/src/main/res/layout/item_sent_group.xml" value="0.23278985507246377" />
+        <entry key="app/src/main/res/layout/item_status.xml" value="0.23278985507246377" />
+        <entry key="app/src/main/res/layout/menu.xml" value="0.14895833333333333" />
+        <entry key="app/src/main/res/layout/row_conversation.xml" value="0.14895833333333333" />
+        <entry key="app/src/main/res/layout/sent_drawable.xml" value="0.23278985507246377" />
+        <entry key="app/src/main/res/menu/chat_menu.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/menu/menu.xml" value="0.302275221108924" />
+        <entry key="app/src/main/res/menu/topmenu.xml" value="0.28229166666666666" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

@@ -21,7 +21,7 @@ public class PhoneNumberActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);//will hide the title
         getSupportActionBar().hide(); //hide the title bar
-        setContentView(R.layout.activity_getstarted);
+        setContentView(R.layout.activity_phonenumber);
 
         continueButton = findViewById(R.id.continueButtonView); //Tìm lại button
         continueButton.setOnClickListener(new View.OnClickListener() {

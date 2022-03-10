@@ -27,7 +27,7 @@ public class GetStartedActivity extends AppCompatActivity {
         getStartedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(GetStartedActivity.this,MainActivity.class);
+                Intent intent=new Intent(GetStartedActivity.this,PhoneNumberActivity.class);
                 startActivity(intent);
                 finish();
             }
