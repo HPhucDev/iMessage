@@ -1,10 +1,15 @@
 plugins {
     id 'com.android.application'
 }
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdk 32
 
+    buildFeatures {
+        viewBinding true
+    }
+    
     defaultConfig {
         applicationId "com.example.imessage"
         minSdk 26
@@ -46,4 +51,14 @@ dependencies {
     implementation 'com.github.sharish:ShimmerRecyclerView:v1.3' //load in main view
 
     implementation 'com.github.3llomi:CircularStatusView:V1.0.2'//icon box chat view
+
+    implementation 'com.hbb20:ccp:2.5.1'//code country for phone number
+
+    implementation platform('com.google.firebase:firebase-bom:29.1.0')// set up firebase
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.firebase:firebase-database'
+    implementation 'com.google.firebase:firebase-storage'
+
+
 }

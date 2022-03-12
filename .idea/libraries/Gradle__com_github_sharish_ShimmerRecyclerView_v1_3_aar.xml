@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.sharish:ShimmerRecyclerView:v1.3@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/bca57a5471df6fe3b5672e105d9d1a51/transformed/jetified-ShimmerRecyclerView-v1.3/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/bca57a5471df6fe3b5672e105d9d1a51/transformed/jetified-ShimmerRecyclerView-v1.3/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/bca57a5471df6fe3b5672e105d9d1a51/transformed/jetified-ShimmerRecyclerView-v1.3/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1dd0fa25e3377e890456759fd74a301f/transformed/jetified-ShimmerRecyclerView-v1.3/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1dd0fa25e3377e890456759fd74a301f/transformed/jetified-ShimmerRecyclerView-v1.3/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/1dd0fa25e3377e890456759fd74a301f/transformed/jetified-ShimmerRecyclerView-v1.3/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

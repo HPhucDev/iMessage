@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "788004194192",
+    "project_id": "imessage-7bd7a",
+    "storage_bucket": "imessage-7bd7a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:788004194192:android:056aa69f2db9b8393e5515",
+        "android_client_info": {
+          "package_name": "com.example.imessage"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "788004194192-e6k9ajpspqmt5evipj1ngeh8qjj1ekft.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3_5cqRTmfjgFt-yrzadlYATUGL_fHSXY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "788004194192-e6k9ajpspqmt5evipj1ngeh8qjj1ekft.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

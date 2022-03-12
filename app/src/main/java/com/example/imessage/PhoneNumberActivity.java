@@ -11,27 +11,52 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.imessage.databinding.ActivityPhonenumberBinding;
+import com.hbb20.CountryCodePicker;
+
+import java.util.zip.Inflater;
+
 
 public class PhoneNumberActivity extends AppCompatActivity {
 
-    Button continueButton;
+    ActivityPhonenumberBinding binding;
+    String countryCode;
+    CountryCodePicker mcountrycodepicker;
+    String phoneNumberInTextBox;
+    String phoneNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);//will hide the title
-        getSupportActionBar().hide(); //hide the title bar
-        setContentView(R.layout.activity_phonenumber);
 
-        continueButton = findViewById(R.id.continueButtonView); //Tìm lại button
-        continueButton.setOnClickListener(new View.OnClickListener() {
+        binding = ActivityPhonenumberBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        getSupportActionBar().hide(); //hide the title bar
+
+
+        mcountrycodepicker=findViewById(R.id.countrycodepicker);//get code country
+        countryCode=mcountrycodepicker.getSelectedCountryCodeWithPlus();
+
+        mcountrycodepicker.setOnCountryChangeListener(new CountryCodePicker.OnCountryChangeListener() {
+            @Override
+            public void onCountrySelected() {
+                countryCode=mcountrycodepicker.getSelectedCountryCodeWithPlus();
+            }
+        });
+
+
+        binding.continueButtonView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(PhoneNumberActivity.this,OTPActivity.class);
+                Intent intent = new Intent(PhoneNumberActivity.this, OTPActivity.class);
+                phoneNumberInTextBox=binding.phoneNumberTextBoxView.getText().toString().substring(1);//get string in text box without first character
+                phoneNumber=countryCode+phoneNumberInTextBox;
+                intent.putExtra("phoneNumber",phoneNumber);
                 startActivity(intent);
                 finish();
             }
         });
+
     }
 
 }
