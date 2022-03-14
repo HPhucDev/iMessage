@@ -1,4 +1,4 @@
-package com.example.imessage;
+package com.example.imessage.Models;
 
 public class User {
 

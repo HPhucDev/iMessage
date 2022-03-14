@@ -27,6 +27,7 @@
         android:textColor="#444444"
         android:textSize="15dp"
         android:textStyle="normal" />
+
     <Button
         android:id="@+id/getStartedButtonView"
         android:layout_width="350dp"

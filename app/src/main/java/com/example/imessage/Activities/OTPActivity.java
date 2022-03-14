@@ -1,11 +1,8 @@
-package com.example.imessage;
+package com.example.imessage.Activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.view.Window;
-import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -26,7 +23,6 @@ import java.util.concurrent.TimeUnit;
 
 
 public class OTPActivity extends AppCompatActivity {
-
 
 
     ActivityOtpBinding binding;

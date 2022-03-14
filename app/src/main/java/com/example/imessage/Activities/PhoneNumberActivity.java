@@ -1,23 +1,18 @@
-package com.example.imessage;
+package com.example.imessage.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.imessage.R;
 import com.example.imessage.databinding.ActivityPhonenumberBinding;
 import com.hbb20.CountryCodePicker;
 
-import java.util.zip.Inflater;
-
 
 public class PhoneNumberActivity extends AppCompatActivity {
+
 
     ActivityPhonenumberBinding binding;
     String countryCode;

@@ -1,15 +1,14 @@
-package com.example.imessage;
+package com.example.imessage.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.imessage.R;
 
 
 public class GetStartedActivity extends AppCompatActivity {
@@ -27,7 +26,7 @@ public class GetStartedActivity extends AppCompatActivity {
         getStartedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(GetStartedActivity.this,PhoneNumberActivity.class);
+                Intent intent=new Intent(GetStartedActivity.this, PhoneNumberActivity.class);
                 startActivity(intent);
                 finish();
             }

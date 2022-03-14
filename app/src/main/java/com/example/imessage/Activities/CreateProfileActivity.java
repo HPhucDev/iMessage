@@ -1,8 +1,4 @@
-package com.example.imessage;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.imessage.Activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -10,8 +6,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.imessage.MainActivity;
-import com.example.imessage.User;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.imessage.Models.User;
 import com.example.imessage.databinding.ActivityCreateprofileBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -21,14 +20,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.example.imessage.User;
-import com.example.imessage.databinding.ActivityCreateprofileBinding;
 
 import java.util.Date;
 import java.util.HashMap;
 
 public class CreateProfileActivity extends AppCompatActivity {
-
     ActivityCreateprofileBinding binding;
     FirebaseAuth auth;
     FirebaseDatabase database;
