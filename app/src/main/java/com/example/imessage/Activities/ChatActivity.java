@@ -31,7 +31,7 @@ public class ChatActivity extends AppCompatActivity {
     @Override
     protected  void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
-        getSupportActionBar().hide(); //hide the title bar
+        //getSupportActionBar().hide();
         binding =ActivityChatBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -43,6 +43,7 @@ public class ChatActivity extends AppCompatActivity {
 
         String name =getIntent().getStringExtra("name");
         String receiverUid =getIntent().getStringExtra("uid");
+
         String senderUid = FirebaseAuth.getInstance().getUid();
 
         senderRoom=senderUid+receiverUid;
@@ -95,6 +96,7 @@ public class ChatActivity extends AppCompatActivity {
                 });
             }
         });
+        //binding.nameView.setText(""+name);
         getSupportActionBar().setTitle(name);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
