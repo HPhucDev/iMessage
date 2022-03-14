@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../layout/custom_preview.xml" value="0.2928205128205128" />
         <entry key="..\:/course/hk6/android project/iMessage/app/src/main/res/layout/activity_chat.xml" value="0.25" />
         <entry key="..\:/course/hk6/android project/iMessage/app/src/main/res/layout/activity_createprofile.xml" value="0.18697916666666667" />
         <entry key="..\:/course/hk6/android project/iMessage/app/src/main/res/layout/activity_getstarted.xml" value="0.11413043478260869" />
@@ -34,19 +35,19 @@
         <entry key="app/src/main/res/drawable/ic_send.xml" value="0.2935185185185185" />
         <entry key="app/src/main/res/drawable/ic_video.xml" value="0.2935185185185185" />
         <entry key="app/src/main/res/drawable/receive_drawable.xml" value="0.2935185185185185" />
-        <entry key="app/src/main/res/layout/activity_chat.xml" value="0.5638647528742283" />
-        <entry key="app/src/main/res/layout/activity_createprofile.xml" value="0.33337189557388175" />
+        <entry key="app/src/main/res/layout/activity_chat.xml" value="0.17073204743731468" />
+        <entry key="app/src/main/res/layout/activity_createprofile.xml" value="0.1907475645642052" />
         <entry key="app/src/main/res/layout/activity_getstarted.xml" value="0.23278985507246377" />
-        <entry key="app/src/main/res/layout/activity_group_chat.xml" value="1.990990990990991" />
+        <entry key="app/src/main/res/layout/activity_group_chat.xml" value="0.30813164471281185" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_otp.xml" value="0.1818591123922574" />
-        <entry key="app/src/main/res/layout/activity_phonenumber.xml" value="0.39285714285714285" />
+        <entry key="app/src/main/res/layout/activity_phonenumber.xml" value="0.1383482971567939" />
         <entry key="app/src/main/res/layout/activity_splashscreen.xml" value="0.21422101449275363" />
         <entry key="app/src/main/res/layout/delete_dialog.xml" value="0.23278985507246377" />
         <entry key="app/src/main/res/layout/demo_layout.xml" value="0.23278985507246377" />
         <entry key="app/src/main/res/layout/demo_status.xml" value="0.14895833333333333" />
         <entry key="app/src/main/res/layout/item_receive.xml" value="0.23278985507246377" />
-        <entry key="app/src/main/res/layout/item_receive_group.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/item_receive_group.xml" value="0.6171603368936153" />
         <entry key="app/src/main/res/layout/item_sent.xml" value="0.4091508506334763" />
         <entry key="app/src/main/res/layout/item_sent_group.xml" value="0.23278985507246377" />
         <entry key="app/src/main/res/layout/item_status.xml" value="0.23278985507246377" />

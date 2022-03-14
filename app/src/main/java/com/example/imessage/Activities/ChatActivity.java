@@ -31,13 +31,16 @@ public class ChatActivity extends AppCompatActivity {
     @Override
     protected  void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
+        getSupportActionBar().hide(); //hide the title bar
         binding =ActivityChatBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
 
         messages =new ArrayList<>();
         adapter =new MessageAdapter(this,messages);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.recyclerView.setAdapter(adapter);
+
         String name =getIntent().getStringExtra("name");
         String receiverUid =getIntent().getStringExtra("uid");
         String senderUid = FirebaseAuth.getInstance().getUid();
