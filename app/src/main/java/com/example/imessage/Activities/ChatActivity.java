@@ -31,7 +31,7 @@ public class ChatActivity extends AppCompatActivity {
     @Override
     protected  void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
         binding =ActivityChatBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -96,7 +96,8 @@ public class ChatActivity extends AppCompatActivity {
                 });
             }
         });
-        binding.nameView.setText(""+name);
+        //binding.nameView.setText(""+name);
+        getSupportActionBar().setTitle(name);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
