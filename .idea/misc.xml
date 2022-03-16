@@ -35,7 +35,6 @@
         <entry key="app/src/main/res/drawable/ic_send.xml" value="0.2935185185185185" />
         <entry key="app/src/main/res/drawable/ic_video.xml" value="0.2935185185185185" />
         <entry key="app/src/main/res/drawable/receive_drawable.xml" value="0.2935185185185185" />
-        <entry key="app/src/main/res/drawable/sent_drawable.xml" value="0.26164383561643834" />
         <entry key="app/src/main/res/layout/activity_chat.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_createprofile.xml" value="0.1907475645642052" />
         <entry key="app/src/main/res/layout/activity_getstarted.xml" value="0.23278985507246377" />
