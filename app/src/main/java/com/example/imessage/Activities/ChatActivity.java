@@ -24,13 +24,14 @@ public class ChatActivity extends AppCompatActivity {
     ActivityChatBinding binding;
     MessageAdapter adapter;
     ArrayList<Message>messages;
+
     String senderRoom,receiverRoom;
     FirebaseDatabase database;
 
     @Override
     protected  void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
-        //getSupportActionBar().hide();
+        getSupportActionBar().hide();
         binding =ActivityChatBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -95,8 +96,7 @@ public class ChatActivity extends AppCompatActivity {
                 });
             }
         });
-        //binding.nameView.setText(""+name);
-        getSupportActionBar().setTitle(name);
+        binding.nameView.setText(""+name);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
