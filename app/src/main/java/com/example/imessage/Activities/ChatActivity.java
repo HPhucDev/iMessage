@@ -24,7 +24,6 @@ public class ChatActivity extends AppCompatActivity {
     ActivityChatBinding binding;
     MessageAdapter adapter;
     ArrayList<Message>messages;
-
     String senderRoom,receiverRoom;
     FirebaseDatabase database;
 
