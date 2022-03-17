@@ -54,6 +54,8 @@ dependencies {
 
     implementation 'com.hbb20:ccp:2.5.1'//code country for phone number
 
+    implementation "com.github.pgreze:android-reactions:1.6"// reaction message
+
     implementation platform('com.google.firebase:firebase-bom:29.1.0')// set up firebase
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-auth'
