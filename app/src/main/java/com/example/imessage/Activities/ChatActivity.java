@@ -68,6 +68,7 @@ public class ChatActivity extends AppCompatActivity {
 
                     }
                 });
+        /////
         binding.sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
