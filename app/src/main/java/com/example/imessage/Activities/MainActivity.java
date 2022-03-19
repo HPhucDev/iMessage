@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide(); //hide the title bar
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
         database=FirebaseDatabase.getInstance();
         users =new ArrayList<>();
         userAdapter= new UserAdapter(this,users);

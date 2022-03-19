@@ -7,8 +7,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.bumptech.glide.Glide;
 import com.example.imessage.Adapters.MessageAdapter;
 import com.example.imessage.Models.Message;
+import com.example.imessage.R;
 import com.example.imessage.databinding.ActivityChatBinding;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -39,6 +41,7 @@ public class ChatActivity extends AppCompatActivity {
         String name =getIntent().getStringExtra("name");
         String receiverUid =getIntent().getStringExtra("uid");
         String senderUid = FirebaseAuth.getInstance().getUid();
+        String avatar =getIntent().getStringExtra("avatar");
 
         senderRoom=senderUid+receiverUid;
         receiverRoom=receiverUid+senderUid;
@@ -111,7 +114,16 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
         binding.nameView.setText(""+name);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Glide.with(ChatActivity.this).load(avatar)
+                .placeholder(R.drawable.avatar)
+                .into(binding.avatarView);
+
+        binding.backbuttonView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     @Override
