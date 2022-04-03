@@ -83,6 +83,10 @@ public class MainActivity extends AppCompatActivity {
         binding.statusList.setLayoutManager(layoutManager);
         binding.statusList.setAdapter(statusAdapter);
         binding.recyclerView.setAdapter(userAdapter);
+
+        binding.recyclerView.showShimmerAdapter();
+        binding.statusList.showShimmerAdapter();
+
         database.getReference().child("users").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -92,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
                     if(!user.getUid().equals(FirebaseAuth.getInstance().getUid()))
                         users.add(user);
                 }
+                binding.recyclerView.hideShimmerAdapter();
                 userAdapter.notifyDataSetChanged();
             }
 
@@ -120,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
                         status.setStatuses(statuses);
                         userStatuses.add(status);
                     }
+                    binding.statusList.hideShimmerAdapter();
                     statusAdapter.notifyDataSetChanged();
                 }
             }
