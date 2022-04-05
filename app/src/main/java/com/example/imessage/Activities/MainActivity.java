@@ -202,6 +202,20 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+//    @Override             Online_Offline begin
+//    protected void onResume() {
+//        super.onResume();
+//        String currentId = FirebaseAuth.getInstance().getUid();
+//        database.getReference().child("presence").child(currentId).setValue("Online");
+//    }
+
+//    @Override
+//    protected void onStop() {
+//        super.onStop();
+//        String currentId = FirebaseAuth.getInstance().getUid();
+//        database.getReference().child("presence").child(currentId).setValue("Offline");
+//    }             Online_Offline end
+
     @Override
     public  boolean onOptionsItemSelected(@NonNull MenuItem item){
         switch (item.getItemId()){
