@@ -4,9 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -53,11 +51,11 @@ public class ChatActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
-        getSupportActionBar().hide();
+//        getSupportActionBar().hide();
         binding = ActivityChatBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-//        setSupportActionBar(binding.toolbar);
+        setSupportActionBar(binding.toolbar);
 
         storage = FirebaseStorage.getInstance();
         database = FirebaseDatabase.getInstance();
@@ -67,38 +65,44 @@ public class ChatActivity extends AppCompatActivity {
         dialog.setCancelable(false);
 
         name = getIntent().getStringExtra("name");
-//        String profile = getIntent().getStringExtra("image");
+        String profile = getIntent().getStringExtra("image");
 
-//        binding.nameView.setText(name);
-//        Glide.with(ChatActivity.this).load(profile)
-//                .placeholder(R.drawable.avatar)
-//                .into(binding.avatarView);
+        binding.nameView.setText(name);
+        Glide.with(ChatActivity.this).load(profile)
+                .placeholder(R.drawable.avatar)
+                .into(binding.avatarView);
+        binding.backbuttonView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
 
         receiverUid = getIntent().getStringExtra("uid");
         senderUid = FirebaseAuth.getInstance().getUid();
-        String avatar = getIntent().getStringExtra("avatar");
 
+        database.getReference().child("presence").child(receiverUid).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    String status = snapshot.getValue(String.class);
+                    if (!status.isEmpty()) {
+                        binding.status.setText(status);
+                        binding.status.setVisibility(View.VISIBLE);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         senderRoom = senderUid + receiverUid;
         receiverRoom = receiverUid + senderUid;
 
-//        database.getReference().child("presence").child(receiverUid).addValueEventListener(new ValueEventListener() {     Online_Offline begin
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                if (snapshot.exists()) {
-//                    String status = snapshot.getValue(String.class);
-//                    if (!status.isEmpty()) {
-//                        binding.status.setText(status);
-//                        binding.status.setVisibility(View.VISIBLE);
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });                                       Online_Offline end
+
 
         messages = new ArrayList<>();
         adapter = new MessageAdapter(this, messages, senderRoom, receiverRoom);
@@ -166,17 +170,9 @@ public class ChatActivity extends AppCompatActivity {
                 });
             }
         });
-        binding.nameView.setText("" + name);
-        Glide.with(ChatActivity.this).load(avatar)
-                .placeholder(R.drawable.avatar)
-                .into(binding.avatarView);
 
-        binding.backbuttonView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+
+
 
         binding.attachment.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -188,7 +184,7 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
 
-
+          getSupportActionBar().setDisplayShowTitleEnabled(false);
 //        getSupportActionBar().setTitle(name);
 //
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -273,12 +269,12 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 
-//    @Override     Online_Offline begin
-//    protected void onResume() {
-//        super.onResume();
-//        String currentId = FirebaseAuth.getInstance().getUid();
-//        database.getReference().child("presence").child(currentId).setValue("Online");
-//    }             Online_Offline end
+    @Override
+    protected void onResume() {
+        super.onResume();
+        String currentId = FirebaseAuth.getInstance().getUid();
+        database.getReference().child("presence").child(currentId).setValue("Online");
+    }
 
     @Override
     public boolean onSupportNavigateUp() {
