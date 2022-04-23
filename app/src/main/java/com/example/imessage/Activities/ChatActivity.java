@@ -4,6 +4,9 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -88,8 +91,12 @@ public class ChatActivity extends AppCompatActivity {
                 if (snapshot.exists()) {
                     String status = snapshot.getValue(String.class);
                     if (!status.isEmpty()) {
-                        binding.status.setText(status);
-                        binding.status.setVisibility(View.VISIBLE);
+                        if(status.equals("Offline")){
+                            binding.status.setVisibility(View.GONE);
+                        }else {
+                            binding.status.setText(status);
+                            binding.status.setVisibility(View.VISIBLE);
+                        }
                     }
                 }
             }
@@ -183,8 +190,34 @@ public class ChatActivity extends AppCompatActivity {
                 startActivityForResult(intent, 25);
             }
         });
+        final Handler handler = new Handler();
+        binding.messageBox.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-          getSupportActionBar().setDisplayShowTitleEnabled(false);
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                database.getReference().child("presence").child(senderUid).setValue("Typing...");
+                handler.removeCallbacksAndMessages(null);
+                handler.postDelayed(userStoppedTyping,1000);
+            }
+            Runnable userStoppedTyping = new Runnable() {
+                @Override
+                public void run() {
+                    database.getReference().child("presence").child(senderUid).setValue("Online");
+
+                }
+            };
+        });
+
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 //        getSupportActionBar().setTitle(name);
 //
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -274,6 +307,13 @@ public class ChatActivity extends AppCompatActivity {
         super.onResume();
         String currentId = FirebaseAuth.getInstance().getUid();
         database.getReference().child("presence").child(currentId).setValue("Online");
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        String currentId = FirebaseAuth.getInstance().getUid();
+        database.getReference().child("presence").child(currentId).setValue("Offline");
+
     }
 
     @Override
