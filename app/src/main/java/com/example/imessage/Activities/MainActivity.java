@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide(); //hide the title bar
+        //getSupportActionBar().hide(); //hide the title bar
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -220,6 +220,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public  boolean onOptionsItemSelected(@NonNull MenuItem item){
         switch (item.getItemId()){
+            case R.id.group:
+                startActivity(new Intent(MainActivity.this,GroupChatActivity.class));
+                break;
             case R.id.search:
                 Toast.makeText(this, "Search clicked", Toast.LENGTH_SHORT).show();
                 break;
