@@ -82,6 +82,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
                 intent.putExtra("name",user.getName());
                 intent.putExtra("avatar",user.getProfileImage());
                 intent.putExtra("uid",user.getUid());
+                intent.putExtra("token", user.getToken());
                 context.startActivity(intent);
             }
         });
