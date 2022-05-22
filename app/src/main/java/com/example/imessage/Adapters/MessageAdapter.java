@@ -20,6 +20,7 @@ import com.github.pgreze.reactions.ReactionsConfig;
 import com.github.pgreze.reactions.ReactionsConfigBuilder;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 
 import java.util.ArrayList;
 
@@ -137,7 +138,12 @@ public class MessageAdapter extends RecyclerView.Adapter {
             viewHolder.binding.message.setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
+                    FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.getInstance();
+                    boolean isFeelingsEnabled = remoteConfig.getBoolean("isFeelingsEnabled");
+                    if(isFeelingsEnabled)
                         popup.onTouch(v, event);
+                    else
+                        Toast.makeText(context, "This feature is disabled temporarily", Toast.LENGTH_SHORT).show();
                     return false;
                 }
             });

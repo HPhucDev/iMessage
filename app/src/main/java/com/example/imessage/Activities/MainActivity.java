@@ -2,6 +2,10 @@ package com.example.imessage.Activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ClipDrawable;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,6 +18,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.CustomTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.example.imessage.Adapters.TopStatusAdapter;
 import com.example.imessage.Adapters.UserAdapter;
 import com.example.imessage.Models.Status;
@@ -63,7 +70,40 @@ public class MainActivity extends AppCompatActivity {
                 .build();
         mFirebaseRemoteConfig.setConfigSettingsAsync(configSettings);
 
+        mFirebaseRemoteConfig.fetchAndActivate().addOnSuccessListener(new OnSuccessListener<Boolean>() {
+            @Override
+            public void onSuccess(Boolean aBoolean) {
+                String toolbarColor = mFirebaseRemoteConfig.getString("toolbarColor");
+                String toolbarImage = mFirebaseRemoteConfig.getString("toolbarImage");
+                Boolean isToolBarImageEnabled = mFirebaseRemoteConfig.getBoolean("toolbarImageEnabled");
+                String backgroundImage = mFirebaseRemoteConfig.getString("backgroundImage");
 
+                Glide.with(MainActivity.this)
+                        .load(backgroundImage)
+                        .into(binding.backgroundImage);
+
+
+                if(isToolBarImageEnabled) {
+                    Glide.with(MainActivity.this)
+                            .load(toolbarImage)
+                            .into(new CustomTarget<Drawable>() {
+                                @Override
+                                public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
+                                    getSupportActionBar()
+                                            .setBackgroundDrawable(resource);
+                                }
+
+                                @Override
+                                public void onLoadCleared(@Nullable Drawable placeholder) {
+
+                                }
+                            });
+                } else {
+                    getSupportActionBar()
+                        .setBackgroundDrawable(new ColorDrawable(Color.parseColor(toolbarColor)));
+                }
+            }
+        });
 
         database = FirebaseDatabase.getInstance();
 
