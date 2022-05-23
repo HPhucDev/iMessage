@@ -1,5 +1,6 @@
 package com.example.imessage.Adapters;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -13,6 +14,7 @@ import com.bumptech.glide.Glide;
 import com.example.imessage.Models.Message;
 import com.example.imessage.Models.User;
 import com.example.imessage.R;
+import com.example.imessage.databinding.DeleteDialogBinding;
 import com.example.imessage.databinding.ItemReceiveGroupBinding;
 import com.example.imessage.databinding.ItemSentGroupBinding;
 import com.github.pgreze.reactions.ReactionPopup;
@@ -97,9 +99,9 @@ public class GroupMessageAdapter extends RecyclerView.Adapter {
             }
             message.setFeeling(pos);
 
-                FirebaseDatabase.getInstance().getReference()
-                        .child("public")
-                        .child(message.getMessageId()).setValue(message);
+            FirebaseDatabase.getInstance().getReference()
+                    .child("public")
+                    .child(message.getMessageId()).setValue(message);
 
             return true; // true is closing popup, false is requesting a new selection
         });
@@ -145,7 +147,7 @@ public class GroupMessageAdapter extends RecyclerView.Adapter {
             viewHolder.binding.message.setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
-                        popup.onTouch(v, event);
+                    popup.onTouch(v, event);
                     return false;
                 }
             });
@@ -154,6 +156,52 @@ public class GroupMessageAdapter extends RecyclerView.Adapter {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
                     popup.onTouch(v, event);
+                    return false;
+                }
+            });
+
+            viewHolder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    View view = LayoutInflater.from(context).inflate(R.layout.delete_dialog, null);
+                    DeleteDialogBinding binding = DeleteDialogBinding.bind(view);
+                    AlertDialog dialog = new AlertDialog.Builder(context)
+                            .setTitle("Delete Message")
+                            .setView(binding.getRoot())
+                            .create();
+
+                    binding.everyone.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            message.setMessage("This message is removed.");
+                            message.setFeeling(-1);
+                            FirebaseDatabase.getInstance().getReference()
+                                    .child("public")
+                                    .child(message.getMessageId()).setValue(message);
+
+                            dialog.dismiss();
+                        }
+                    });
+
+                    binding.delete.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            FirebaseDatabase.getInstance().getReference()
+                                    .child("public")
+                                    .child(message.getMessageId()).setValue(null);
+                            dialog.dismiss();
+                        }
+                    });
+
+                    binding.cancel.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                        }
+                    });
+
+                    dialog.show();
+
                     return false;
                 }
             });
@@ -209,6 +257,52 @@ public class GroupMessageAdapter extends RecyclerView.Adapter {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
                     popup.onTouch(v, event);
+                    return false;
+                }
+            });
+
+            viewHolder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    View view = LayoutInflater.from(context).inflate(R.layout.delete_dialog, null);
+                    DeleteDialogBinding binding = DeleteDialogBinding.bind(view);
+                    AlertDialog dialog = new AlertDialog.Builder(context)
+                            .setTitle("Delete Message")
+                            .setView(binding.getRoot())
+                            .create();
+
+                    binding.everyone.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            message.setMessage("This message is removed.");
+                            message.setFeeling(-1);
+                            FirebaseDatabase.getInstance().getReference()
+                                    .child("public")
+                                    .child(message.getMessageId()).setValue(message);
+
+                            dialog.dismiss();
+                        }
+                    });
+
+                    binding.delete.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            FirebaseDatabase.getInstance().getReference()
+                                    .child("public")
+                                    .child(message.getMessageId()).setValue(null);
+                            dialog.dismiss();
+                        }
+                    });
+
+                    binding.cancel.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                        }
+                    });
+
+                    dialog.show();
+
                     return false;
                 }
             });
