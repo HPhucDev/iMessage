@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
@@ -19,8 +20,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.mukesh.OnOtpCompletionListener;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 
@@ -83,13 +89,44 @@ public class OTPActivity extends AppCompatActivity {
             public void onOtpCompleted(String otp) {
                 PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationID, otp);
 
-                auth.signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                auth.signInWithCredential(credential).addOnCompleteListener( new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()) {
-                            Intent intent = new Intent(OTPActivity.this, CreateProfileActivity.class);
-                            startActivity(intent);
-                            finishAffinity();
+                            DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+                            DatabaseReference userRef = database.child("users");
+                            userRef.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DataSnapshot> task) {
+                                    Boolean created = false;
+                                    if (task.isSuccessful()) {
+                                        List<String> users = new ArrayList<>();
+                                        for (DataSnapshot ds : task.getResult().getChildren()) {
+                                            String sub = ds.child("phoneNumber").getValue(String.class);
+                                            if(!users.contains(sub)) {
+                                                users.add(sub);
+                                            }
+                                        }
+                                        for (String user: users){
+                                            Log.i("userPhone",user);
+                                            if(user.equals(phoneNumber)){
+                                                Intent intent = new Intent(OTPActivity.this, MainActivity.class);
+                                                startActivity(intent);
+                                                finishAffinity();
+                                                created = true;
+                                            }
+                                        }
+                                        if(created == false){
+                                            Intent intent = new Intent(OTPActivity.this, CreateProfileActivity.class);
+                                            startActivity(intent);
+                                            finishAffinity();
+                                        }
+                                    } else {
+                                        Log.d("TAG", task.getException().getMessage()); //Don't ignore potential errors!
+
+                                    }
+                                }
+                            });
                         } else {
                             Toast.makeText(OTPActivity.this, "Failed.", Toast.LENGTH_SHORT).show();
                         }

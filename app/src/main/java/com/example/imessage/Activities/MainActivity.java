@@ -70,40 +70,40 @@ public class MainActivity extends AppCompatActivity {
                 .build();
         mFirebaseRemoteConfig.setConfigSettingsAsync(configSettings);
 
-        mFirebaseRemoteConfig.fetchAndActivate().addOnSuccessListener(new OnSuccessListener<Boolean>() {
-            @Override
-            public void onSuccess(Boolean aBoolean) {
-                String toolbarColor = mFirebaseRemoteConfig.getString("toolbarColor");
-                String toolbarImage = mFirebaseRemoteConfig.getString("toolbarImage");
-                Boolean isToolBarImageEnabled = mFirebaseRemoteConfig.getBoolean("toolbarImageEnabled");
-                String backgroundImage = mFirebaseRemoteConfig.getString("backgroundImage");
-
-                Glide.with(MainActivity.this)
-                        .load(backgroundImage)
-                        .into(binding.backgroundImage);
-
-
-                if(isToolBarImageEnabled) {
-                    Glide.with(MainActivity.this)
-                            .load(toolbarImage)
-                            .into(new CustomTarget<Drawable>() {
-                                @Override
-                                public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
-                                    getSupportActionBar()
-                                            .setBackgroundDrawable(resource);
-                                }
-
-                                @Override
-                                public void onLoadCleared(@Nullable Drawable placeholder) {
-
-                                }
-                            });
-                } else {
-                    getSupportActionBar()
-                        .setBackgroundDrawable(new ColorDrawable(Color.parseColor(toolbarColor)));
-                }
-            }
-        });
+//        mFirebaseRemoteConfig.fetchAndActivate().addOnSuccessListener(new OnSuccessListener<Boolean>() {
+//            @Override
+//            public void onSuccess(Boolean aBoolean) {
+//                String toolbarColor = mFirebaseRemoteConfig.getString("toolbarColor");
+//                String toolbarImage = mFirebaseRemoteConfig.getString("toolbarImage");
+//                Boolean isToolBarImageEnabled = mFirebaseRemoteConfig.getBoolean("toolbarImageEnabled");
+//                String backgroundImage = mFirebaseRemoteConfig.getString("backgroundImage");
+//
+//                Glide.with(MainActivity.this)
+//                        .load(backgroundImage)
+//                        .into(binding.backgroundImage);
+//
+//
+//                if(isToolBarImageEnabled) {
+//                    Glide.with(MainActivity.this)
+//                            .load(toolbarImage)
+//                            .into(new CustomTarget<Drawable>() {
+//                                @Override
+//                                public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
+//                                    getSupportActionBar()
+//                                            .setBackgroundDrawable(resource);
+//                                }
+//
+//                                @Override
+//                                public void onLoadCleared(@Nullable Drawable placeholder) {
+//
+//                                }
+//                            });
+//                } else {
+//                    getSupportActionBar()
+//                        .setBackgroundDrawable(new ColorDrawable(Color.parseColor(toolbarColor)));
+//                }
+//            }
+//        });
 
         database = FirebaseDatabase.getInstance();
 
