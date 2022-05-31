@@ -37,6 +37,8 @@ public class OTPActivity extends AppCompatActivity {
     FirebaseAuth auth;
     String verificationID;
     ProgressDialog dialog;
+    String created = "false";
+    String phone = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,7 +100,7 @@ public class OTPActivity extends AppCompatActivity {
                             userRef.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                                 @Override
                                 public void onComplete(@NonNull Task<DataSnapshot> task) {
-                                    Boolean created = false;
+
                                     if (task.isSuccessful()) {
                                         List<String> users = new ArrayList<>();
                                         for (DataSnapshot ds : task.getResult().getChildren()) {
@@ -110,15 +112,20 @@ public class OTPActivity extends AppCompatActivity {
                                         for (String user: users){
                                             Log.i("userPhone",user);
                                             if(user.equals(phoneNumber)){
+                                                created="true";
                                                 Intent intent = new Intent(OTPActivity.this, MainActivity.class);
+                                                intent.putExtra("created",created);
                                                 startActivity(intent);
                                                 finishAffinity();
-                                                created = true;
                                             }
                                         }
-                                        if(created == false){
-                                            Intent intent = new Intent(OTPActivity.this, CreateProfileActivity.class);
-                                            startActivity(intent);
+                                        if(created.equals("false")){
+                                            created = "false";
+                                            Intent intent = new Intent(OTPActivity.this, MainActivity.class);
+                                            intent.putExtra("created",created);
+
+                                            Intent intent1 = new Intent(OTPActivity.this, CreateProfileActivity.class);
+                                            startActivity(intent1);
                                             finishAffinity();
                                         }
                                     } else {

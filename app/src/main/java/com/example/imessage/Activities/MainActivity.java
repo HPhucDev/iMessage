@@ -8,6 +8,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -35,6 +36,7 @@ import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.messaging.FirebaseMessaging;
@@ -47,6 +49,7 @@ import com.google.firebase.storage.UploadTask;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
@@ -104,9 +107,10 @@ public class MainActivity extends AppCompatActivity {
 //                }
 //            }
 //        });
+        String created = getIntent().getStringExtra("created");
+        Log.i("USERID ", FirebaseAuth.getInstance().getUid());
 
         database = FirebaseDatabase.getInstance();
-
         FirebaseMessaging.getInstance()
                 .getToken()
                 .addOnSuccessListener(new OnSuccessListener<String>() {
