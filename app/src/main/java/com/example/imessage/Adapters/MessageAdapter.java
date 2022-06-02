@@ -143,8 +143,8 @@ public class MessageAdapter extends RecyclerView.Adapter {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
                     //FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.getInstance();
-                    boolean isFeelingsEnabled = remoteConfig.getBoolean("isFeelingsEnabled");
-                    if(isFeelingsEnabled)
+                    Boolean isFeelingsEnabled = remoteConfig.getBoolean("isFeelingsEnabled");
+                    if(!isFeelingsEnabled)
                         popup.onTouch(v, event);
                     else
                         Toast.makeText(context, "This feature is disabled temporarily.", Toast.LENGTH_SHORT).show();
@@ -170,7 +170,7 @@ public class MessageAdapter extends RecyclerView.Adapter {
                             .setView(binding.getRoot())
                             .create();
 
-                    if(remoteConfig.getBoolean("isEveryoneDeletionEnabled")) {
+                    if(!remoteConfig.getBoolean("isEveryoneDeletionEnabled")) {
                         binding.everyone.setVisibility(View.VISIBLE);
                     } else {
                         binding.everyone.setVisibility(View.GONE);
