@@ -103,18 +103,25 @@ public class OTPActivity extends AppCompatActivity {
 
                                     if (task.isSuccessful()) {
                                         List<String> users = new ArrayList<>();
+                                        List<String> userNames = new ArrayList<>();
                                         for (DataSnapshot ds : task.getResult().getChildren()) {
                                             String sub = ds.child("phoneNumber").getValue(String.class);
+                                            String user = ds.child("name").getValue(String.class);
                                             if(!users.contains(sub)) {
                                                 users.add(sub);
                                             }
+                                            if(!userNames.contains(user)){
+                                                userNames.add(user);
+                                            }
                                         }
-                                        for (String user: users){
-                                            Log.i("userPhone",user);
-                                            if(user.equals(phoneNumber)){
+                                        for (int i =0;i< users.size();i++){
+                                            Log.i("userPhone",users.get(i));
+                                            if(users.get(i).equals(phoneNumber)){
                                                 created="true";
+                                                String userNameLoggined = userNames.get(i);
                                                 Intent intent = new Intent(OTPActivity.this, MainActivity.class);
                                                 intent.putExtra("created",created);
+                                                intent.putExtra("userNameLoggined",userNameLoggined);
                                                 startActivity(intent);
                                                 finishAffinity();
                                             }

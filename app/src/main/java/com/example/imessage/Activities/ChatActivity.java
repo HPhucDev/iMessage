@@ -78,8 +78,10 @@ public class ChatActivity extends AppCompatActivity {
         dialog.setCancelable(false);
 
         name = getIntent().getStringExtra("name");
-        String profile = getIntent().getStringExtra("image");
+
+        String profile = getIntent().getStringExtra("avatar");
         String token = getIntent().getStringExtra("token");
+        String userLoggin = getIntent().getStringExtra("userNameLoggined");
 
         binding.nameView.setText(name);
         Glide.with(ChatActivity.this).load(profile)
@@ -187,7 +189,7 @@ public class ChatActivity extends AppCompatActivity {
                                         .setValue(message).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
-                                        sendNotification(name, message.getMessage(), token);
+                                        sendNotification(userLoggin, message.getMessage(), token);
                                     }
                                 });
                             }

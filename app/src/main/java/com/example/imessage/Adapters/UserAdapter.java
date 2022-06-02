@@ -27,9 +27,11 @@ import java.util.Date;
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder > {
     Context context;
     ArrayList<User> users;
-    public  UserAdapter(Context context,ArrayList<User> users){
+    String userNameLoggined;
+    public  UserAdapter(Context context,ArrayList<User> users,String userNameLoggined){
         this.context=context;
         this.users=users;
+        this.userNameLoggined=userNameLoggined;
     }
     @NonNull
     @Override
@@ -83,6 +85,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
                 intent.putExtra("avatar",user.getProfileImage());
                 intent.putExtra("uid",user.getUid());
                 intent.putExtra("token", user.getToken());
+                intent.putExtra("userNameLoggined",userNameLoggined);
                 context.startActivity(intent);
             }
         });

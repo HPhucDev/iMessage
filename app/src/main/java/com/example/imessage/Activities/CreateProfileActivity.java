@@ -78,13 +78,32 @@ public class CreateProfileActivity extends AppCompatActivity {
                                 reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                     @Override
                                     public void onSuccess(Uri uri) {
+                                        // chose a Character random from this String
+                                        String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                                                + "0123456789"
+                                                + "abcdefghijklmnopqrstuvxyz";
+                                        // create StringBuffer size of AlphaNumericString
+                                        StringBuilder sb = new StringBuilder(163);
+                                        for (int i = 0; i < 163; i++) {
+                                            // generate a random number between
+                                            // 0 to AlphaNumericString variable length
+                                            int index
+                                                    = (int)(AlphaNumericString.length()
+                                                    * Math.random());
+                                            // add Character one by one in end of sb
+                                            sb.append(AlphaNumericString
+                                                    .charAt(index));
+                                        }
+                                        String token =  sb.toString();
                                         String imageUrl = uri.toString();
+
+
 
                                         String uid = auth.getUid();
                                         String phone = auth.getCurrentUser().getPhoneNumber();
                                         String name = binding.fullNameTextBoxView.getText().toString();
-
-                                        User user = new User(uid, name, phone, imageUrl);
+                                        String userNameLoggined =  name;
+                                        User user = new User(uid, name, phone, imageUrl,token);
 
                                         database.getReference()
                                                 .child("users")
@@ -95,6 +114,7 @@ public class CreateProfileActivity extends AppCompatActivity {
                                                     public void onSuccess(Void aVoid) {
                                                         dialog.dismiss();
                                                         Intent intent = new Intent(CreateProfileActivity.this, MainActivity.class);
+                                                        intent.putExtra("userNameLoggined",userNameLoggined);
                                                         startActivity(intent);
                                                         finish();
                                                     }
@@ -105,10 +125,29 @@ public class CreateProfileActivity extends AppCompatActivity {
                         }
                     });
                 } else {
+
+                    // chose a Character random from this String
+                    String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                            + "0123456789"
+                            + "abcdefghijklmnopqrstuvxyz";
+                    // create StringBuffer size of AlphaNumericString
+                    StringBuilder sb = new StringBuilder(163);
+                    for (int i = 0; i < 163; i++) {
+                        // generate a random number between
+                        // 0 to AlphaNumericString variable length
+                        int index
+                                = (int)(AlphaNumericString.length()
+                                * Math.random());
+                        // add Character one by one in end of sb
+                        sb.append(AlphaNumericString
+                                .charAt(index));
+                    }
+                    String token =  sb.toString();
                     String uid = auth.getUid();
                     String phone = auth.getCurrentUser().getPhoneNumber();
 
-                    User user = new User(uid, name, phone, "No Image");
+                    String userNameLoggined =  name;
+                    User user = new User(uid, name, phone, "No Image",token);
 
                     database.getReference()
                             .child("users")
@@ -119,6 +158,7 @@ public class CreateProfileActivity extends AppCompatActivity {
                                 public void onSuccess(Void aVoid) {
                                     dialog.dismiss();
                                     Intent intent = new Intent(CreateProfileActivity.this, MainActivity.class);
+                                    intent.putExtra("userNameLoggined",userNameLoggined);
                                     startActivity(intent);
                                     finish();
                                 }

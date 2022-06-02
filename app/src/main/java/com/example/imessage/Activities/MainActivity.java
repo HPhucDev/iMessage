@@ -108,8 +108,10 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
         String created = getIntent().getStringExtra("created");
-        Log.i("USERID ", FirebaseAuth.getInstance().getUid());
+        String userLoggin = getIntent().getStringExtra("userNameLoggined");
 
+
+        Log.i("Loggin ",userLoggin);
         database = FirebaseDatabase.getInstance();
         FirebaseMessaging.getInstance()
                 .getToken()
@@ -147,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-        userAdapter = new UserAdapter(this, users);
+        userAdapter = new UserAdapter(this, users,userLoggin);
         statusAdapter = new TopStatusAdapter(this, userStatuses);
         //binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);

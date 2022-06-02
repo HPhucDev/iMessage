@@ -14,6 +14,13 @@ public class User {
         this.phoneNumber = phoneNumber;
         this.profileImage = profileImage;
     }
+    public User(String uid, String name, String phoneNumber, String profileImage,String token) {
+        this.uid = uid;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.profileImage = profileImage;
+        this.token=token;
+    }
 
     public String getUid() {
         return uid;
